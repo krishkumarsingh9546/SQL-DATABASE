@@ -1,0 +1,204 @@
+                        CREATE A SQL SERVER AND DATABASE WITH TABLES
+ CREATE DATABASE college;
+
+USE college;
+
+CREATE TABLE student (
+     rollno INT,
+     name VARCHAR(30),
+     age INT
+);
+
+INSERT INTO student
+VALUES
+(102, "adam", 12),
+(102, "bob", 14);
+
+SELECT * FROM student;
+
+                             COMMAND FOR SQL SERVER
+
+
+CREATE DATABASE db_name;
+CREATE DATABASE IF NOT EXISTS db_name;
+
+DROP DATABASE   db_name;
+DROP DATABASE IF EXISTS db_name;
+
+SHOW DATABASE;  // it show all database table 
+USE DATABASE db_name;
+SHOW TABLE;
+
+
+
+                                TABLES QUERIES
+
+.CREATE
+.update
+.delete
+.alter
+.turncate
+.insert
+
+
+
+                               basic CREATE database conect WITH foreign key to primary key
+
+
+CREATE DATABASE IF NOT EXISTS instagram;
+
+USE instagram;
+
+CREATE TABLE user(
+     id int primary key,
+     name varchar(30) not null,
+     email varchar(30) unique,
+     followers int default 0,
+     following int 
+);
+
+insert into user
+(id,  name, email, followers, following)
+values
+(1, "krish", "krish@123", 23, 12),
+(3, "Ajit", "Ajit@123", 40, 19),
+(6,  "hera", "suar@123", 43, 72);
+
+select * from user;
+
+
+create table post(
+		id int primary key,
+        conetent varchar(100),
+        user_id int,
+        foreign key (user_id) references user(id)
+);
+
+insert into post
+(id, conetent, user_id)
+values
+(1, "hello Bhai", 1),
+(12, "sab shi ha", 3),
+(10, "thik hun bahi", 6);
+
+
+select * from post;
+
+
+
+
+                                            Where  clause in SQL
+
+
+// to defines some conditions
+select * from post;
+
+select * from user
+where followers >= 30;
+
+operators:-
+
+Arithmetic Operators :- (+ addtion) (- subtraction) (* multiplication) (/ division) (% modulus)
+
+Comparison Operators :- (= equal to) (!= not equal to) ,> ,>= ,< , <= 
+
+Logical Operators :- AND, OR, NOT, IN , BETWEEN , ALL, LIKE, ANY
+
+Bitwise operators :- (& Bitwise AND) (| Bitwise OR)
+
+
+AND (to check for both conditions to be true)
+OR  (to check for one of the conditions to be true)
+BETWEEN (select for a given range)
+IN (matches any value in the list)
+NOT (to negate the given condition)
+
+
+
+example :-   Logical and where followers >= 30 AND following >= 20;
+example :-   Logical and where followers >= 30 OR following >= 20;
+example :-   Logical and where age BETWEEN 15 and 17;
+
+
+
+
+                                    LIMIT clause
+
+
+///// sets an upper limit on number of (tuples) rows to be returned
+
+
+
+
+                                   Order By clause
+
+//// to sort in ascending (ASC) or Descending order (DESC)
+
+select * from user
+order by id ASC;
+
+select * from user
+order by id desc;
+
+
+
+                                   Aggregrate Functions
+
+Aggregrate Functions perfrom a calculation on a set of values, and return a single value.
+
+.COUNT()
+.MAX()
+.MIN()
+.SUM()
+.AVG()
+
+example:-
+
+select MAX(followers)
+from user
+
+select sum(followers)
+from user
+
+
+
+
+                     PRACTICE QUUESTION 1
+
+create database if not exists college;
+use college;
+
+create table  teacher(
+id int primary key,
+name varchar(30) not null,
+subject varchar(40),
+salary int
+);
+
+insert into teacher
+(id, name, subject, salary)
+values
+(101, "ajay", "math", 50000),
+(102, "bharat", "english", 60000),
+(103, "chetan", "chemistry", 45000),
+(104, "divya", "physics", 75000);
+
+select * from teacher;
+
+-- select * from teacher
+-- where salary > 55000;
+
+-- alter table teacher
+-- change column salary ctc int;
+
+-- update teacher
+-- set ctc = ctc + ctc * 0.25;
+
+-- alter  table teacher
+-- add column city varchar(30) default "guganow";
+
+alter table teacher
+drop column city;
+
+
+  
